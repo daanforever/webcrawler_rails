@@ -1,18 +1,16 @@
-APP_PATH='/opt/capistrano/webcrawler_rails/current/'.freeze
-
 worker_processes 2
-working_directory "#{APP_PATH}"
+working_directory "."
 
 preload_app true
 
 timeout 30
 
-listen "#{APP_PATH}/tmp/sockets/unicorn.sock", :backlog => 64
+listen "tmp/sockets/unicorn.sock", :backlog => 64
 
-pid "#{APP_PATH}/tmp/pids/unicorn.pid"
+pid "tmp/pids/unicorn.pid"
 
-stderr_path "#{APP_PATH}/log/unicorn.stderr.log"
-stdout_path "#{APP_PATH}/log/unicorn.stdout.log"
+stderr_path "log/unicorn.stderr.log"
+stdout_path "log/unicorn.stdout.log"
 
 before_fork do |server, worker|
     defined?(ActiveRecord::Base) and
