@@ -1,4 +1,4 @@
-APP_PATH='/opt/capistrano/current'.freeze
+APP_PATH='/opt/capistrano/webcrawler_rails/current'.freeze
 
 worker_processes 2
 working_directory "#{APP_PATH}"
