@@ -36,17 +36,17 @@ end
 namespace :deploy do
   desc "Tell unicorn to restart the app."
   task :restart do
-    run "export RAILS_ENV=#{rails_env}; cd #{current_path} && (script/spin restart || script/spin start)"
+    run "cd #{current_path} && test -e tmp/pids/unicorn.pid && kill -USR2 `cat tmp/pids/unicorn.pid`"
   end
 
   desc "Tell unicorn to stop the app."
   task :stop do
-    run "export RAILS_ENV=#{rails_env}; cd #{current_path} && (script/spin stop)"
+    run "cd #{current_path} && test -e tmp/pids/unicorn.pid && kill `cat tmp/pids/unicorn.pid`"
   end
 
   desc "Tell unicorn to start the app."
   task :start do
-    run "export RAILS_ENV=#{rails_env}; cd #{current_path} && (script/spin start)"
+    run "cd #{current_path} && bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D"
   end
 
   desc "Symlinks the database.yml"
