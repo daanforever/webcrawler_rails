@@ -36,7 +36,7 @@ end
 namespace :deploy do
   desc "Tell unicorn to restart the app."
   task :restart do
-    run "cd #{current_path} && test -e tmp/pids/unicorn.pid && kill -USR2 `cat tmp/pids/unicorn.pid`"
+    run "cd #{current_path} && (test -e tmp/pids/unicorn.pid && kill -USR2 `cat tmp/pids/unicorn.pid`) || true"
   end
 
   desc "Tell unicorn to stop the app."
