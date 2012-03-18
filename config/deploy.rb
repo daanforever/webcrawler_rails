@@ -46,7 +46,7 @@ namespace :deploy do
 
   desc "Tell unicorn to start the app."
   task :start do
-    run "cd #{current_path} && bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D"
+    run "cd #{current_path} && bundle exec unicorn_rails -c config/unicorn/#{rails_env}.rb -E #{rails_env} -D"
   end
 
   desc "Symlinks the database.yml"
