@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 UNICORN_RAILS='bundle exec unicorn_rails'.freeze
-APP_PATH='/opt/capistrano/current'.freeze
+APP_PATH='/opt/capistrano/webcrawler_rails/current'.freeze
 
 class Runner
 class << self
