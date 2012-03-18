@@ -6,7 +6,7 @@ class Runner
 class << self
 
 def start
-system "#{UNICORN_RAILS} -c config/unicorn.rb -E production -D"
+system "#{UNICORN_RAILS} -c config/unicorn.rb -E #{ENV['RAILS_ENV']} -D"
 end
 
 def reload
