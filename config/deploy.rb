@@ -14,7 +14,7 @@ role :db,  "www.dron.me", :primary => true
 namespace :deploy do
   desc "Tell unicorn to restart the app."
   task :restart do
-    run "#{current_path}/script/spin restart"
+    run "#{current_path}/script/spin restart || #{current_path}/script/spin start"
   end
 
   desc "Tell unicorn to stop the app."
