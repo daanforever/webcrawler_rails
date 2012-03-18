@@ -5,10 +5,7 @@ set :application, "webcrawler_rails"
 set :repository,  "git://github.com/daanforever/webcrawler_rails.git"
 
 set :scm, :git
-
-#require 'capistrano/ext/multistage'
-#set :stages, %w(staging production)
-#set :default_stage, "staging"
+set :use_sudo, false
 
 desc "Run tasks in production enviroment."
 task :production do
