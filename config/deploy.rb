@@ -10,7 +10,7 @@ set :use_sudo, false
 desc "Run tasks in production enviroment."
 task :production do
   set :rails_env, "production"
-  set :deploy_to, "/opt/capistrano/#{application}/production/"
+  set :deploy_to, "/opt/capistrano/#{application}/#{rails_env}/"
 end 
 
 desc "Run tasks in staging enviroment."
@@ -19,8 +19,18 @@ task :staging do
   role :app, "www.dron.me"
   role :db,  "www.dron.me", :primary => true
 
+  set :rails_env, "staging"
+  set :deploy_to, "/opt/capistrano/#{application}/#{rails_env}/"
+end
+
+desc "Run tasks in staging enviroment."
+task :development do
+  role :web, "www.dron.me"
+  role :app, "www.dron.me"
+  role :db,  "www.dron.me", :primary => true
+
   set :rails_env, "development"
-  set :deploy_to, "/opt/capistrano/#{application}/staging/"
+  set :deploy_to, "/opt/capistrano/#{application}/#{rails_env}/"
 end
 
 namespace :deploy do
