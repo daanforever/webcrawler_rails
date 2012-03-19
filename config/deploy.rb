@@ -7,10 +7,18 @@ set :repository,  "git://github.com/daanforever/webcrawler_rails.git"
 set :scm, :git
 set :use_sudo, false
 
+set :branch, "master"
+
 desc "Run tasks in production enviroment."
 task :production do
   set :rails_env, "production"
-  set :deploy_to, "/opt/capistrano/#{application}/#{rails_env}/"
+  set :deploy_to, "/opt/apps/#{application}/#{rails_env}/"
+
+  set :user, "crawler"
+
+  role :web, "crawler.dron.me"
+  role :app, "crawler.dron.me"
+  role :db,  "crawler.dron.me", :primary => true
 end 
 
 desc "Run tasks in staging enviroment."
