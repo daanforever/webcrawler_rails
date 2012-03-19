@@ -31,7 +31,7 @@ task :staging do
   role :db,  "www.dron.me", :primary => true
 
   set :rails_env, "staging"
-  set :deploy_to, "/opt/capistrano/#{application}/#{rails_env}/"
+  set :deploy_to, "/opt/apps/#{application}/#{rails_env}/"
 end
 
 desc "Run tasks in staging enviroment."
@@ -41,7 +41,7 @@ task :development do
   role :db,  "www.dron.me", :primary => true
 
   set :rails_env, "development"
-  set :deploy_to, "/opt/capistrano/#{application}/#{rails_env}/"
+  set :deploy_to, "/opt/apps/#{application}/#{rails_env}/"
 end
 
 namespace :deploy do
