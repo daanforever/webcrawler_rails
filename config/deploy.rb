@@ -72,8 +72,8 @@ namespace :deploy do
 
   desc "Fix permissions"
   task :fix_permissions, :roles => :app do
-    run "#{sudo} chown -R #{user}:www-data #{deploy_to}"
-    run "#{sudo} chmod -R o-rwx #{deploy_to}"
+    run "chown -R #{user}:www-data #{deploy_to}"
+    run "chmod -R o-rwx #{deploy_to}"
   end
 end
 
