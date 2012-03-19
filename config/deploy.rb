@@ -4,17 +4,20 @@ require "bundler/capistrano"
 set :application, "webcrawler_rails"
 set :repository,  "git://github.com/daanforever/webcrawler_rails.git"
 
-set :scm, :git
-set :use_sudo, false
+set :scm,         :git
+set :use_sudo,    false
+set :user,        "crawler"
 
-set :branch, "master"
+set :branch,      "master"
+
+depend :remote,   :command, "ruby"
+depend :remote,   :command, "gem"
+depend :remote,   :command, "bundle"
 
 desc "Run tasks in production enviroment."
 task :production do
   set :rails_env, "production"
   set :deploy_to, "/opt/apps/#{application}/#{rails_env}/"
-
-  set :user, "crawler"
 
   role :web, "crawler.dron.me"
   role :app, "crawler.dron.me"
@@ -66,8 +69,15 @@ namespace :deploy do
   task :create_db_config_dir, :roles => :app do
     run "test -e #{deploy_to}/shared/config || mkdir #{deploy_to}/shared/config"
   end
+
+  desc "Fix permissions"
+  task :fix_permissions, :roles => :app do
+    run "#{sudo} chown -R #{user}:www-data #{deploy_to}"
+    run "#{sudo} chmod -R o-rwx #{deploy_to}"
+  end
 end
 
 after 'deploy:update_code', 'deploy:symlink_db'
 after 'deploy:setup', 'deploy:create_db_config_dir'
+after 'deploy:setup', 'deploy:fix_permissions'
 
