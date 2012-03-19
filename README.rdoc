@@ -1,3 +1,10 @@
+== Deployment
+
+bundle install
+cap (development|staging|production) deploy:setup
+cap (development|staging|production) deploy:check
+cap (development|staging|production) deploy
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create

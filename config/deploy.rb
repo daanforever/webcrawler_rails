@@ -54,7 +54,12 @@ namespace :deploy do
     run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
   end
 
+  desc "Create config directory for database.yml"
+  task :create_db_config_dir, :roles => :app do
+    run "test -e #{deploy_to}/shared/config || mkdir #{deploy_to}/shared/config"
+  end
 end
 
 after 'deploy:update_code', 'deploy:symlink_db'
+after 'deploy:setup', 'deploy:create_db_config_dir'
 
