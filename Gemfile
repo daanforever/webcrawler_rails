@@ -5,6 +5,7 @@ gem 'unicorn'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'mysql2'
+gem 'dalli'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
