@@ -8,7 +8,7 @@ set :scm,         :git
 set :use_sudo,    false
 set :user,        "crawler"
 
-set :branch,      "master"
+set :branch,      "0.2"
 
 depend :remote,   :command, "ruby"
 depend :remote,   :command, "gem"
