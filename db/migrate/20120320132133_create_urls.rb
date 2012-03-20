@@ -1,8 +1,7 @@
 class CreateUrls < ActiveRecord::Migration
   def change
     create_table :urls do |t|
-      t.varchar(64) :url
-
+      t.string :url, :limit => 64
       t.timestamps
     end
   end
