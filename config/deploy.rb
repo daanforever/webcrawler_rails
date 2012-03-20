@@ -104,7 +104,7 @@ namespace :db do
     desc "Resets the Database"
     task :migrate_reset do
       puts "\n\n=== Resetting the Database! ===\n\n"
-      run "cd #{current_path}; rake db:migrate:reset RAILS_ENV=#{rails_env}"
+      run "cd #{current_path}; RAILS_ENV=#{rails_env} rake db:migrate:reset"
     end
     
     desc "Destroys Database"
