@@ -1,4 +1,6 @@
 WebcrawlerRails::Application.routes.draw do
+  resources :servers
+
   resources :urls
 
   # The priority is based upon order of creation:

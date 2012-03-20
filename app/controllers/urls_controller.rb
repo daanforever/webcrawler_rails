@@ -2,7 +2,7 @@ class UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
   def index
-    @urls = Url.all
+    @count = Url.count(:id)
 
     respond_to do |format|
       format.html # index.html.erb
