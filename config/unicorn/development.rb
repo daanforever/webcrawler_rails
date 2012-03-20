@@ -1,5 +1,5 @@
 
-application_dir="/opt/capistrano/webcrawler_rails/development/current/"
+application_dir="/opt/apps/webcrawler_rails/development/current/"
 
 worker_processes 2
 working_directory application_dir
