@@ -1,3 +1,7 @@
+== TODO
+
+# Simple first page
+
 == Deployment
 
   bundle install
