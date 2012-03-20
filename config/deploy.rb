@@ -77,6 +77,50 @@ namespace :deploy do
   end
 end
 
+namespace :db do
+  
+    desc "Syncs the database.yml file from the local machine to the remote machine"
+    task :sync_yaml do
+      puts "\n\n=== Syncing database yaml to the production server! ===\n\n"
+      unless File.exist?("config/database.yml")
+        puts "There is no config/database.yml.\n "
+        exit
+      end
+      #run what u want
+    end
+    
+    desc "Create Database"
+    task :create do
+      puts "\n\n=== Creating Database! ===\n\n"
+      run "cd #{current_path}; rake db:create RAILS_ENV=#{rails_env}"
+    end
+  
+    desc "Migrate Database"
+    task :migrate do
+      puts "\n\n=== Migrating the Database! ===\n\n"
+      run "cd #{current_path}; rake db:migrate RAILS_ENV=#{rails_env}"
+    end
+
+    desc "Resets the Database"
+    task :migrate_reset do
+      puts "\n\n=== Resetting the Database! ===\n\n"
+      run "cd #{current_path}; rake db:migrate:reset RAILS_ENV=#{rails_env}"
+    end
+    
+    desc "Destroys Database"
+    task :drop do
+      puts "\n\n=== Destroying the Database! ===\n\n"
+      run "cd #{current_path}; rake db:drop RAILS_ENV=#{rails_env}"
+    end
+
+    desc "Populates the Database"
+    task :seed do
+      puts "\n\n=== Populating the Database! ===\n\n"
+      run "cd #{current_path}; rake db:seed RAILS_ENV=#{rails_env}"
+    end
+  
+end
+
 after 'deploy:update_code', 'deploy:symlink_db'
 after 'deploy:setup', 'deploy:create_db_config_dir'
 after 'deploy:setup', 'deploy:fix_permissions'
