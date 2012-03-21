@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320202216) do
+ActiveRecord::Schema.define(:version => 20120321133550) do
 
   create_table "servers", :force => true do |t|
     t.string   "name",       :limit => 64
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20120320202216) do
     t.string   "url",        :limit => 64
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.integer  "server_id"
   end
 
   add_index "urls", ["updated_at"], :name => "index_urls_on_updated_at"
